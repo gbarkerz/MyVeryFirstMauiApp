@@ -1,61 +1,53 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:MyVeryFirstMauiApp"
              x:Class="MyVeryFirstMauiApp.MainPage">
+
+    <ContentPage.BindingContext>
+        <vm:TestViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <vm:StatusToTickedString x:Key="StatusToTickedString" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
     <ScrollView>
         <VerticalStackLayout Spacing="25" Padding="30">
 
-            <Label Text="First" SemanticProperties.HeadingLevel="Level2" />
-            <Label Text="First details." />
+            <CollectionView x:Name="TestCollectionView"
+                HeightRequest="400"
+                SemanticProperties.Description="Birds"
+                ItemsSource="{Binding TestListCollection}">
 
-            <StackLayout>
-                <Label Text="Second" SemanticProperties.HeadingLevel="Level2" />
-                <Label Text="Second details." />
-            </StackLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid
+                            Padding="10,0,10,0"
+                            AutomationProperties.IsInAccessibleTree="True"
+                            SemanticProperties.Description="{Binding AccessibleName, Mode=OneWay}">
 
-            <StackLayout SemanticProperties.Description="Heading container">
-                <Label Text="Third" SemanticProperties.HeadingLevel="Level2" />
-                <Label Text="Third details." />
-            </StackLayout>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                            </Grid.GestureRecognizers>
 
-            <Label Text="Fourth" SemanticProperties.HeadingLevel="Level2" />
-            <Label Text="Fourth details." />
-
-            <Label 
-                Text="Hello, World!"
-                SemanticProperties.HeadingLevel="Level1"
-                FontSize="32"
-                HorizontalOptions="Center" />
-
-            <Label 
-                Text="Welcome to .NET Multi-platform App UI"
-                SemanticProperties.HeadingLevel="Level1"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
-                FontSize="18"
-                HorizontalOptions="Center" />
-
-            <Label 
-                Text="Current count: 0"
-                FontSize="18"
-                FontAttributes="Bold"
-                x:Name="CounterLabel"
-                HorizontalOptions="Center" />
-
-            <Button 
-                Text="Click me"
-                FontAttributes="Bold"
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
-                HorizontalOptions="Center" />
-
-            <Image
-                Source="dotnet_bot.png"
-                SemanticProperties.Description="Cute dot net bot waving hi to you!"
-                WidthRequest="250"
-                HeightRequest="310"
-                HorizontalOptions="Center" />
-
+                            <Label Grid.Column="0" Text="{Binding Name, Mode=OneWay}" />
+                            
+                            <Label Grid.Column="1" Margin="20,0,0,0"
+                                Text="{Binding IsTicked, Mode=OneWay,
+                                    Converter={StaticResource StatusToTickedString}}" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
