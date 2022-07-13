@@ -7,9 +7,9 @@ namespace MyVeryFirstMauiApp;
 
 public partial class MainPage : ContentPage
 {
-	public MainPage()
-	{
-		InitializeComponent();
+    public MainPage()
+    {
+        InitializeComponent();
 
         var vm = this.BindingContext as TestViewModel;
         vm.CreateTestListItems();
