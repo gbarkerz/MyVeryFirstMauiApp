@@ -76,7 +76,6 @@ public class TestCard : INotifyPropertyChanged
     public TestCard(string name)
     {
         this.Name = name;
-        this.AccessibleName = name;
     }
 
     private string name;
@@ -113,18 +112,7 @@ public class TestCard : INotifyPropertyChanged
     {
         get
         {
-            var fullAccessibleName = accessibleName;
-
-            if (isTicked)
-            {
-                fullAccessibleName += " Ticked!";
-            }
-
-            return fullAccessibleName;
-        }
-        set
-        {
-            SetProperty(ref accessibleName, value);
+            return name + (isTicked ? " Ticked!" : "");
         }
     }
 
