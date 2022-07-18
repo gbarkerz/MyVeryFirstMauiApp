@@ -24,6 +24,7 @@
 
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
+                        <!-- The following Grid relates to Issue https://github.com/dotnet/maui/issues/8722.
                         <Grid
                             Padding="10,0,10,0"
                             AutomationProperties.IsInAccessibleTree="True"
@@ -33,17 +34,31 @@
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
-                            
+
                             <Grid.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
                             </Grid.GestureRecognizers>
 
                             <Label Grid.Column="0" Text="{Binding Name, Mode=OneWay}" />
-                            
+
                             <Label Grid.Column="1" Margin="20,0,0,0"
-                                Text="{Binding IsTicked, Mode=OneWay,
-                                    Converter={StaticResource StatusToTickedString}}" />
+                            Text="{Binding IsTicked, Mode=OneWay,
+                                Converter={StaticResource StatusToTickedString}}" />
                         </Grid>
+-->
+                        <!-- The following Frame and Grid relate to Issue https://github.com/dotnet/maui/issues/8801. -->
+                        <Frame Margin="8" Padding="8">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+
+                                <Label Grid.Row="0" Text="First row label" />
+
+                                <Label Grid.Row="1" Text="Second row label" />
+                            </Grid>
+                        </Frame>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
