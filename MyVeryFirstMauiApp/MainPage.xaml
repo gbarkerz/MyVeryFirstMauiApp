@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:MyVeryFirstMauiApp"
+             xmlns:windows="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.WindowsSpecific;assembly=Microsoft.Maui.Controls"
              x:Class="MyVeryFirstMauiApp.MainPage">
 
     <ContentPage.BindingContext>
@@ -14,6 +15,10 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
+    <Shell.TitleView>
+        <Button Text="Test" />
+    </Shell.TitleView>
+    
     <ScrollView>
         <VerticalStackLayout Spacing="25" Padding="30">
 
@@ -47,7 +52,7 @@
                         </Grid>
 -->
                         <!-- The following Frame and Grid relate to Issue https://github.com/dotnet/maui/issues/8801. -->
-                        <Frame Margin="8" Padding="8">
+                        <Frame Margin="8" Padding="8" SemanticProperties.Description="My test item">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="*" />
