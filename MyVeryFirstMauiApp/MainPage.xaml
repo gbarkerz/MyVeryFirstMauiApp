@@ -18,7 +18,7 @@
     <Shell.TitleView>
         <Button Text="Test" />
     </Shell.TitleView>
-    
+
     <ScrollView>
         <VerticalStackLayout Spacing="25" Padding="30">
 
@@ -67,7 +67,9 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-            
+
+            <Button Text="Finish" />
+
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
