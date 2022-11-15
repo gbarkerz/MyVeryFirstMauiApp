@@ -6,4 +6,8 @@ public partial class AppShell : Shell
     {
         InitializeComponent();
     }
+
+    private async void OnMenuItemClicked(object sender, EventArgs e)
+    {
+    }
 }

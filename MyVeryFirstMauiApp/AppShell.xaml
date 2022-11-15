@@ -41,4 +41,7 @@
         </Tab>
     </FlyoutItem>
 
+    <MenuItem Text="Alpha" Clicked="OnMenuItemClicked" />
+    <MenuItem Text="Beta" Clicked="OnMenuItemClicked" />
+
 </Shell>
